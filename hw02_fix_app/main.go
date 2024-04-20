@@ -24,6 +24,5 @@ func main() {
 	staff, err = reader.ReadJSON(path, -1)
 
 	fmt.Print(err)
-
 	printer.PrintStaff(staff)
 }
