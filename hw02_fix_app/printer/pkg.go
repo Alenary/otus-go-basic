@@ -2,6 +2,7 @@ package printer
 
 import (
 	"fmt"
+
 	"github.com/Alenary/otus-go-basic/hw02_fix_app/types"
 )
 

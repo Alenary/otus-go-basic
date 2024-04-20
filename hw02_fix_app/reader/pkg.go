@@ -1,12 +1,13 @@
 package reader
 
-import	"encoding/json"
-import	"fmt"
-import	"io"
-import	"os"
+import (
+	"encoding/json"
+	"fmt"
+	"io"
+	"os"
 
-import	"github.com/Alenary/otus-go-basic/hw02_fix_app/types"
-
+	"github.com/Alenary/otus-go-basic/hw02_fix_app/types"
+)
 
 func ReadJSON(filePath string) ([]types.Employee, error) {
 	f, err := os.Open(filePath)
