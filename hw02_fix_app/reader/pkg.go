@@ -5,7 +5,7 @@ import	"fmt"
 import	"io"
 import	"os"
 
-import	"github.com/Alenary/otus-go-basic/tree/master/hw02_fix_app/types"
+import	"github.com/Alenary/otus-go-basic/hw02_fix_app/types"
 
 
 func ReadJSON(filePath string, limit int) ([]types.Employee, error) {

@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/Alenary/otus-go-basic/tree/master/hw02_fix_app/printer"
-	"github.com/Alenary/otus-go-basic/tree/master/hw02_fix_app/reader"
-	"github.com/Alenary/otus-go-basic/tree/master/hw02_fix_app/types"
+	"github.com/Alenary/otus-go-basic/hw02_fix_app/printer"
+	"github.com/Alenary/otus-go-basic/hw02_fix_app/reader"
+	"github.com/Alenary/otus-go-basic/hw02_fix_app/types"
 )
 
 func main() {
