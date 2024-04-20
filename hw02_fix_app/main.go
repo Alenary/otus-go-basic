@@ -19,10 +19,13 @@ func main() {
 
 	if len(path) == 0 {
 		path = "data.json"
+	} else {
+		fmt.Println("passed")
 	}
 
 	staff, err = reader.ReadJSON(path)
 
-	fmt.Print(err)
-	printer.PrintStaff(staff)
+	if err == nil {
+		printer.PrintStaff(staff)
+	}
 }
