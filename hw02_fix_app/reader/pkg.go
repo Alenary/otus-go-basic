@@ -9,16 +9,17 @@ import (
 	"github.com/Alenary/otus-go-basic/hw02_fix_app/types"
 )
 
-func ReadJSON(filePath string, limit int) ([]types.Employee, error) {
+func ReadJSON(filePath string) ([]types.Employee, error) {
 	f, err := os.Open(filePath)
 	if err != nil {
 		fmt.Printf("Error: %v", err)
 	}
 
 	byte, err := io.ReadAll(f)
+
 	if err != nil {
 		fmt.Printf("Error: %v", err)
-		return nil, nil
+		return nil, err
 	}
 
 	var data []types.Employee
