@@ -7,7 +7,7 @@ import (
 )
 
 func PrintStaff(staff []types.Employee) {
-		for i := 0; i < len(staff); i++ {
-			fmt.Println(staff[i])
-		}
+	for i := 0; i < len(staff); i++ {
+		fmt.Println(staff[i])
 	}
+}
