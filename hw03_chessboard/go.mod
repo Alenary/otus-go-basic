@@ -1,3 +1,3 @@
-module github.com/fixme_my_friend/hw03_chessboard
+module github.com/Alenary/otus-go-basic/hw03_chessboard
 
 go 1.20
