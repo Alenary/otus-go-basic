@@ -1,56 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	var size int
+	var board string
 	fmt.Println("Введите число - размер шахматной доски")
 	fmt.Scanf("%d", &size)
-	if size <2 {
+	if size < 2 {
 		fmt.Println("Указаны некорректные данные")
 	} else {
 		for i := 0; i < size; i++ {
-			if i%2 == 0 {
-				createchessline1(size)
-			} else {
-				createchessline2(size)
+			for n := 0; n < size; n++ {
+				if (i+n)%2 == 0 {
+					board += "#"
+				} else {
+					board += " "
+				}
 			}
+			board += "\n"
 		}
-	}
-}
-
-func createchessline1(size int) {
-	for i := 0; i < size; i++ {
-		if i < size-1 {
-			if i%2 == 0 {
-				fmt.Print("#")
-			} else {
-				fmt.Print(" ")
-			}
-		} else {
-			if i%2 == 0 {
-				fmt.Println("#")
-			} else {
-				fmt.Println(" ")
-			}
-		}
-	}
-}
-
-func createchessline2(size int) {
-	for i := 0; i < size; i++ {
-		if i < size-1 {
-			if i%2 == 0 {
-				fmt.Print(" ")
-			} else {
-				fmt.Print("#")
-			}
-		} else {
-			if i%2 == 0 {
-				fmt.Println(" ")
-			} else {
-				fmt.Println("#")
-			}
-		}
+		fmt.Println(board)
 	}
 }
