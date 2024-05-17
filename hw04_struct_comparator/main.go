@@ -36,7 +36,7 @@ func (b *Book) SetID(id int) {
 
 // Value receiver.
 
-func (b *Book) GetID() int {
+func (b *Book) ID() int {
 	return b.id
 }
 
@@ -44,7 +44,7 @@ func (b *Book) SetTitle(title string) {
 	b.title = title
 }
 
-func (b *Book) GetTitle() string {
+func (b *Book) Title() string {
 	return b.title
 }
 
@@ -52,7 +52,7 @@ func (b *Book) SetAuthor(author string) {
 	b.author = author
 }
 
-func (b *Book) GetAuthor() string {
+func (b *Book) Author() string {
 	return b.author
 }
 
@@ -60,7 +60,7 @@ func (b *Book) SetYear(year int) {
 	b.year = year
 }
 
-func (b *Book) GetYear() int {
+func (b *Book) Year() int {
 	return b.year
 }
 
@@ -68,7 +68,7 @@ func (b *Book) SetSize(size int) {
 	b.size = size
 }
 
-func (b *Book) GetSize() int {
+func (b *Book) Size() int {
 	return b.size
 }
 
@@ -76,7 +76,7 @@ func (b *Book) SetRate(rate float64) {
 	b.rate = rate
 }
 
-func (b *Book) GetRate() float64 {
+func (b *Book) Rate() float64 {
 	return b.rate
 }
 
@@ -104,11 +104,11 @@ func NewBookComparator(mode BookCompare) *BookComparator {
 func (bc *BookComparator) Compare(book1, book2 *Book) bool {
 	switch bc.a {
 	case ByYear:
-		return book1.GetYear() > book2.GetYear()
+		return book1.Year() > book2.Year()
 	case BySize:
-		return book1.GetSize() > book2.GetSize()
+		return book1.Size() > book2.Size()
 	case ByRate:
-		return book1.GetRate() > book2.GetRate()
+		return book1.Rate() > book2.Rate()
 	default:
 		fmt.Println("Второй аргумент больше первого")
 		return false
