@@ -28,11 +28,12 @@ type Triangle struct {
 
 // calculateArea функция для вычисления площади фигуры ожидает на входе объект типа Shape и возвращает его площадь.
 
-func calculateArea(s Shape) (float64, error) {
-	if s == nil {
+func calculateArea(s any) (float64, error) {
+	shape, ok := s.(Shape)
+	if !ok {
 		return 0, errors.New("переданный объект не является фигурой")
 	}
-	return s.Area(), nil
+	return shape.Area(), nil
 }
 
 // Area метод для вычисления площади круга.
