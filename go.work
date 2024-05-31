@@ -1,7 +1,7 @@
 go 1.20
 
 use (
-	./hw06_project
+	./hw06_testing
 	./hw07_word_counter
 	./hw08_binary_search
 	./hw09_serialize
