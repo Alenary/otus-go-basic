@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/Alenary/otus-go-basic/hw06_project/hw02_fix_app/types"
+	"github.com/Alenary/otus-go-basic/hw06_testing/hw02_fix_app/types"
 )
 
 // ReadJSON читает JSON файл и возвращает массив Employee
