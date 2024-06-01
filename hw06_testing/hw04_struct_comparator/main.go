@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//  Cтруктура Book с неэкспортируемыми полями: ID, Title, Author, Year, Size, Rate (может быть дробным).
+// Cтруктура Book с неэкспортируемыми полями: ID, Title, Author, Year, Size, Rate (может быть дробным).
 
 type Book struct {
 	id     int
@@ -115,9 +115,15 @@ func (bc *BookComparator) Compare(book1, book2 *Book) bool {
 	}
 }
 
+var book1, book2 *Book
+
+func initBooks() {
+	book1 = NewBook(1, "Title1", "Author1", 2024, 100, 4.9)
+	book2 = NewBook(2, "Title2", "Author2", 2023, 99, 4.5)
+}
+
 func main() {
-	book1 := NewBook(1, "Title1", "Author1", 2024, 100, 4.9)
-	book2 := NewBook(2, "Title2", "Author2", 2023, 99, 4.5)
+	initBooks()
 
 	comparatorByYear := NewBookComparator(ByYear)
 	fmt.Println("Сравнение по году:", comparatorByYear.Compare(book1, book2))

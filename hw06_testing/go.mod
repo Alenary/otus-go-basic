@@ -1,3 +1,5 @@
-module github.com/fixme_my_friend/hw06_testing
+module github.com/Alenary/otus-go-basic/hw06_testing
 
 go 1.20
+
+require github.com/stretchr/testify v1.9.0

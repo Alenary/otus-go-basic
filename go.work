@@ -1,10 +1,6 @@
 go 1.20
 
 use (
-	./hw02_fix_app
-	./hw03_chessboard
-	./hw04_struct_comparator
-	./hw05_shapes
 	./hw06_testing
 	./hw07_word_counter
 	./hw08_binary_search
