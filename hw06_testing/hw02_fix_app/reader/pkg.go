@@ -7,7 +7,7 @@ import (
 	"github.com/Alenary/otus-go-basic/hw06_testing/hw02_fix_app/types"
 )
 
-// ReadJSON читает JSON файл и возвращает массив Employee
+// ReadJSON читает JSON файл и возвращает массив Employee.
 func ReadJSON(filePath string) ([]types.Employee, error) {
 	f, err := os.Open(filePath)
 	if err != nil {
@@ -17,8 +17,8 @@ func ReadJSON(filePath string) ([]types.Employee, error) {
 
 	var employees []types.Employee
 	decoder := json.NewDecoder(f)
-	if err := decoder.Decode(&employees); err != nil {
-		return nil, err
+	if decodeErr := decoder.Decode(&employees); decodeErr != nil {
+		return nil, decodeErr
 	}
 
 	return employees, nil
