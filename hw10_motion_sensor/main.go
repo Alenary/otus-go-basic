@@ -14,7 +14,7 @@ func SensorData(dataCh chan<- float64, wg *sync.WaitGroup) {
 	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()
 
-	for i := 0; i < 60; i++ {
+	for i := 0; i < 10; i++ { // Уменьшено количество итераций до 10
 		<-ticker.C
 		// Симуляция считывания данных с использованием crypto/rand.
 		n, err := rand.Int(rand.Reader, big.NewInt(100))
@@ -59,12 +59,18 @@ func main() {
 	wg.Add(1)
 	go ProcessData(dataCh, processedCh, &wg)
 
+	// WaitGroup для основной горутины, которая выводит обработанные данные.
+	var printWg sync.WaitGroup
+	printWg.Add(1)
+
 	// Основная горутина для получения и вывода обработанных данных.
 	go func() {
+		defer printWg.Done()
 		for avg := range processedCh {
 			fmt.Printf("Обработанное среднее значение: %.2f\n", avg)
 		}
 	}()
 
 	wg.Wait()
+	printWg.Wait() // Ждем завершения вывода всех данных.
 }
