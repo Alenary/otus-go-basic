@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"google.golang.org/protobuf/proto"
 	"log"
+
+	"google.golang.org/protobuf/proto"
 )
 
 // SerializeBooks сериализует слайс объектов Book в байтовый массив.
