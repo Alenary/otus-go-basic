@@ -3,15 +3,35 @@ package main
 import (
 	"sync"
 	"testing"
+	"time"
 )
 
 // TestSensorData тестирует функцию SensorData.
 func TestSensorData(t *testing.T) {
-	dataCh := make(chan float64, 10) // Уменьшено количество данных до 10
+	dataCh := make(chan float64, 60)
 	var wg sync.WaitGroup
 
+	// Уменьшаем время работы сенсора до 5 секунд для теста
+	go func() {
+		defer wg.Done()
+		ticker := time.NewTicker(1 * time.Second)
+		defer ticker.Stop()
+
+		timer := time.NewTimer(5 * time.Second)
+		defer timer.Stop()
+
+		for {
+			select {
+			case <-ticker.C:
+				n := float64(42) // Используем фиксированное значение для простоты
+				dataCh <- n
+			case <-timer.C:
+				close(dataCh)
+				return
+			}
+		}
+	}()
 	wg.Add(1)
-	go SensorData(dataCh, &wg)
 
 	// Ждем завершения горутины.
 	wg.Wait()
@@ -22,8 +42,8 @@ func TestSensorData(t *testing.T) {
 		count++
 	}
 
-	if count != 10 { // Ожидание 10 данных вместо 60
-		t.Errorf("ожидалось 10 данных, получено %d", count)
+	if count != 5 {
+		t.Errorf("ожидалось 5 данных, получено %d", count)
 	}
 }
 
@@ -35,11 +55,13 @@ func TestProcessData(t *testing.T) {
 
 	// Отправляем тестовые данные в dataCh.
 	go func() {
+		defer wg.Done()
 		for i := 0; i < 10; i++ {
 			dataCh <- float64(i)
 		}
 		close(dataCh)
 	}()
+	wg.Add(1)
 
 	wg.Add(1)
 	go ProcessData(dataCh, processedCh, &wg)

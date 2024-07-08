@@ -14,17 +14,24 @@ func SensorData(dataCh chan<- float64, wg *sync.WaitGroup) {
 	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()
 
-	for i := 0; i < 10; i++ { // Уменьшено количество итераций до 10
-		<-ticker.C
-		// Симуляция считывания данных с использованием crypto/rand.
-		n, err := rand.Int(rand.Reader, big.NewInt(100))
-		if err != nil {
-			n = big.NewInt(0) // значение по умолчанию в случае ошибки.
+	timer := time.NewTimer(1 * time.Minute)
+	defer timer.Stop()
+
+	for {
+		select {
+		case <-ticker.C:
+			// Симуляция считывания данных с использованием crypto/rand.
+			n, err := rand.Int(rand.Reader, big.NewInt(100))
+			if err != nil {
+				n = big.NewInt(0) // значение по умолчанию в случае ошибки.
+			}
+			data := float64(n.Int64())
+			dataCh <- data
+		case <-timer.C:
+			close(dataCh)
+			return
 		}
-		data := float64(n.Int64())
-		dataCh <- data
 	}
-	close(dataCh)
 }
 
 // ProcessData обрабатывает данные с сенсора и вычисляет средние значения.
