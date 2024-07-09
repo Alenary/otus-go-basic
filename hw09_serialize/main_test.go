@@ -8,9 +8,9 @@ import (
 
 func TestSerializeBooks(t *testing.T) {
 	tests := []struct {
-		name    string
-		books   []*Book
-		wantErr bool
+		name     string
+		books    []*Book
+		wantErr  bool
 	}{
 		{
 			name: "simple case",
@@ -26,8 +26,8 @@ func TestSerializeBooks(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name:    "nil slice",
-			books:   nil,
+			name: "nil slice",
+			books: nil,
 			wantErr: false,
 		},
 	}
@@ -49,9 +49,9 @@ func TestSerializeBooks(t *testing.T) {
 
 func TestDeserializeBooks(t *testing.T) {
 	tests := []struct {
-		name    string
-		books   []*Book
-		wantErr bool
+		name     string
+		books    []*Book
+		wantErr  bool
 	}{
 		{
 			name: "simple case",
@@ -67,8 +67,8 @@ func TestDeserializeBooks(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name:    "nil slice",
-			books:   nil,
+			name: "nil slice",
+			books: nil,
 			wantErr: false,
 		},
 	}
@@ -108,9 +108,9 @@ func TestDeserializeBooks(t *testing.T) {
 
 func TestSerializeBooksJSON(t *testing.T) {
 	tests := []struct {
-		name    string
-		books   []*Book
-		wantErr bool
+		name     string
+		books    []*Book
+		wantErr  bool
 	}{
 		{
 			name: "simple case",
@@ -126,8 +126,8 @@ func TestSerializeBooksJSON(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name:    "nil slice",
-			books:   nil,
+			name: "nil slice",
+			books: nil,
 			wantErr: false,
 		},
 	}
@@ -149,9 +149,9 @@ func TestSerializeBooksJSON(t *testing.T) {
 
 func TestDeserializeBooksJSON(t *testing.T) {
 	tests := []struct {
-		name    string
-		books   []*Book
-		wantErr bool
+		name     string
+		books    []*Book
+		wantErr  bool
 	}{
 		{
 			name: "simple case",
@@ -167,8 +167,8 @@ func TestDeserializeBooksJSON(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name:    "nil slice",
-			books:   nil,
+			name: "nil slice",
+			books: nil,
 			wantErr: false,
 		},
 	}
