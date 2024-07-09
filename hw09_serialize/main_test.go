@@ -8,9 +8,15 @@ import (
 
 func TestSerializeBooks(t *testing.T) {
 	tests := []struct {
+		<<<<<<< HEAD
 		name     string
 		books    []*Book
 		wantErr  bool
+		=======
+		name    string
+		books   []*Book
+		wantErr bool
+		>>>>>>> 2534dcbdca84eb390edfb0fde23493de55b10ce8
 	}{
 		{
 			name: "simple case",
@@ -26,8 +32,13 @@ func TestSerializeBooks(t *testing.T) {
 			wantErr: false,
 		},
 		{
+			<<<<<<< HEAD
 			name: "nil slice",
 			books: nil,
+			=======
+			name:    "nil slice",
+			books:   nil,
+			>>>>>>> 2534dcbdca84eb390edfb0fde23493de55b10ce8
 			wantErr: false,
 		},
 	}
@@ -49,9 +60,15 @@ func TestSerializeBooks(t *testing.T) {
 
 func TestDeserializeBooks(t *testing.T) {
 	tests := []struct {
+		<<<<<<< HEAD
 		name     string
 		books    []*Book
 		wantErr  bool
+		=======
+		name    string
+		books   []*Book
+		wantErr bool
+		>>>>>>> 2534dcbdca84eb390edfb0fde23493de55b10ce8
 	}{
 		{
 			name: "simple case",
@@ -67,8 +84,13 @@ func TestDeserializeBooks(t *testing.T) {
 			wantErr: false,
 		},
 		{
+			<<<<<<< HEAD
 			name: "nil slice",
 			books: nil,
+			=======
+			name:    "nil slice",
+			books:   nil,
+			>>>>>>> 2534dcbdca84eb390edfb0fde23493de55b10ce8
 			wantErr: false,
 		},
 	}
@@ -90,6 +112,7 @@ func TestDeserializeBooks(t *testing.T) {
 				if tt.books == nil {
 					assert.Nil(t, deserializedBooks, "Deserialized books should be nil")
 				} else {
+					<<<<<<< HEAD
 					assert.Equal(t, len(tt.books), len(deserializedBooks),
 						"Deserialized books should have the same length as the original")
 					for i := range tt.books {
@@ -192,6 +215,12 @@ func TestDeserializeBooksJSON(t *testing.T) {
 				} else {
 					assert.Equal(t, len(tt.books), len(deserializedBooks),
 						"Deserialized books should have the same length as the original")
+					=======
+					assert.Equal(
+						t, len(tt.books), len(deserializedBooks),
+						"Deserialized books should have the same length as the original",
+					)
+					>>>>>>> 2534dcbdca84eb390edfb0fde23493de55b10ce8
 					for i := range tt.books {
 						assert.Equal(t, tt.books[i].Id, deserializedBooks[i].Id)
 						assert.Equal(t, tt.books[i].Title, deserializedBooks[i].Title)
