@@ -8,7 +8,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// Реализация интерфейса json.Marshaler для Book
+// MarshalJSON реализует интерфейс json.Marshaler для Book.
 func (b *Book) MarshalJSON() ([]byte, error) {
 	type Alias Book
 	return json.Marshal(&struct {
@@ -18,7 +18,7 @@ func (b *Book) MarshalJSON() ([]byte, error) {
 	})
 }
 
-// Реализация интерфейса json.Unmarshaler для Book
+// UnmarshalJSON реализует интерфейс json.Unmarshaler для Book.
 func (b *Book) UnmarshalJSON(data []byte) error {
 	type Alias Book
 	aux := &struct {
