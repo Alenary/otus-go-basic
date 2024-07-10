@@ -8,6 +8,27 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// Реализация интерфейса json.Marshaler для Book
+func (b *Book) MarshalJSON() ([]byte, error) {
+	type Alias Book
+	return json.Marshal(&struct {
+		*Alias
+	}{
+		Alias: (*Alias)(b),
+	})
+}
+
+// Реализация интерфейса json.Unmarshaler для Book
+func (b *Book) UnmarshalJSON(data []byte) error {
+	type Alias Book
+	aux := &struct {
+		*Alias
+	}{
+		Alias: (*Alias)(b),
+	}
+	return json.Unmarshal(data, aux)
+}
+
 // SerializeBooks сериализует слайс объектов Book в байтовый массив (Protobuf).
 func SerializeBooks(books []*Book) ([]byte, error) {
 	bookList := &BookList{
