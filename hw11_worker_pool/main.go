@@ -7,9 +7,6 @@ import (
 
 // incrementCounter увеличивает значение счетчика с использованием Mutex для синхронизации.
 func incrementCounter(mu *sync.Mutex, counter *int) {
-	// Синхронизируем доступ к счетчику.
-	// Блокировка позволяет одной горутине получить эксклюзивный доступ к ресурсу,
-	// чтобы предотвратить одновременные изменения, которые могут привести к некорректным данным или гонкам данных.
 	mu.Lock()
 	*counter++
 	mu.Unlock()
@@ -29,7 +26,9 @@ func runGoroutines(numGoroutines int, wg *sync.WaitGroup, mu *sync.Mutex, counte
 
 			// Синхронизируем доступ к счетчику.
 			incrementCounter(mu, counter)
+			mu.Lock()
 			fmt.Printf("Горутина %d увеличила счетчик, текущее значение: %d\n", id, *counter)
+			mu.Unlock()
 		}(i)
 	}
 
@@ -37,7 +36,6 @@ func runGoroutines(numGoroutines int, wg *sync.WaitGroup, mu *sync.Mutex, counte
 	wg.Wait()
 }
 
-// Функция main - точка входа в программу.
 func main() {
 	var counter int
 
